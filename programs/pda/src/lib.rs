@@ -13,7 +13,7 @@ pub mod pda {
         Ok(())
     }
 
-    pub fn send_sol(ctx: Context<SendSol>, amount: u64) -> ProgramResult {
+    pub fn send_sol(ctx: Context<SendSol>, amount: u64, bump: u8) -> ProgramResult {
 
         let ix = system_instruction::transfer(
             ctx.accounts.pda.key,
@@ -28,7 +28,7 @@ pub mod pda {
                 ctx.accounts.to.to_account_info(),
                 ctx.accounts.system_program.to_account_info(),
             ],
-            &[&[b"test", &[254]]],
+            &[&[b"test", &[bump]]],
         )?;
 
         Ok(())

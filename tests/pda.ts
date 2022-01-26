@@ -55,6 +55,7 @@ describe('pda', () => {
     // Send sol to User1
     await program.rpc.sendSol(
       new anchor.BN(1_000_000),
+      bump,
       {
         accounts: {
           to: user1.publicKey,
